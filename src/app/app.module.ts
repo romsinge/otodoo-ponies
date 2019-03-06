@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
 import { ModalModule } from './modules/modal/modal.module';
+import { ConfirmDialog } from './guards/exit.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,11 @@ import { ModalModule } from './modules/modal/modal.module';
     RacingPipe,
     HomeComponent,
     CreateRaceComponent,
-    CreatePoneyComponent
+    CreatePoneyComponent,
+    ConfirmDialog
+  ],
+  entryComponents: [
+    ConfirmDialog
   ],
   imports: [
     BrowserModule,

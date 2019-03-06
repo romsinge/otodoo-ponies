@@ -13,7 +13,8 @@ import { CommonModule } from '@angular/common';
     M.MatListModule,
     M.MatButtonModule,
     M.MatInputModule,
-    M.MatSelectModule
+    M.MatSelectModule,
+    M.MatDialogModule
   ]
 })
 export class MaterialModule { }
