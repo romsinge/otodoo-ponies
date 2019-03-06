@@ -17,6 +17,7 @@ import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
+import { ModalModule } from './modules/modal/modal.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { CreatePoneyComponent } from './components/create-poney/create-poney.com
     RouterModule.forRoot(routes),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

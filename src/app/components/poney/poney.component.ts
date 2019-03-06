@@ -28,8 +28,8 @@ export class PoneyComponent implements OnInit {
     this.intervalId = setInterval(() => {
       this.poney.distance += Math.floor(Math.random() * 3) + 5
 
-      if (this.poney.distance >= 90) {
-        this.poney.distance = 90
+      if (this.poney.distance >= 85) {
+        this.poney.distance = 85
         this.win.emit(this.poney)
         this.stopRunning()
       }

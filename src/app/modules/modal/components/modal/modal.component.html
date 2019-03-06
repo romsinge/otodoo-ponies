@@ -1,0 +1,6 @@
+<div class="container" *ngIf="(message$ | async) as message" (click)="close()">
+  <mat-card class="modal" (click)="$event.stopPropagation()">
+    <mat-card-title>Message</mat-card-title>
+    {{ message }}
+  </mat-card>
+</div>

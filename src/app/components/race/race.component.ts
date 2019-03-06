@@ -1,3 +1,4 @@
+import { ModalService } from './../../modules/modal/services/modal.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { DataService } from './../../services/data.service';
 import { Poney } from './../../interfaces/poney';
@@ -20,7 +21,9 @@ export class RaceComponent implements OnInit {
   ponies$: Observable<Poney[]>
 
   handleWin(poney: Poney): void {
-    console.log("WINNER : ", poney.name)
+    
+    this.modalService.setMessage(`WINNER : ${poney.name} !`)
+    
     this.poneyChildren.forEach(poneyChild => {
       poneyChild.stopRunning()
     })
@@ -45,6 +48,11 @@ export class RaceComponent implements OnInit {
     this.raceSubscription.unsubscribe()
   }
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private modalService: ModalService
+  ) {}
 
 }
