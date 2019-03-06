@@ -1,3 +1,22 @@
-<p>
-  create-race works!
-</p>
+<mat-toolbar>
+  <span>Create Race</span>
+</mat-toolbar>
+
+<form (submit)="handleSubmit()">
+
+  <mat-form-field>
+    <input matInput name="name" placeholder="Name" [(ngModel)]="race.name" required #nameInput="ngModel" />
+    <mat-error *ngIf="nameInput.hasError('required')">Ce champ est requis</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select multiple placeholder="Ponies" [(ngModel)]="race.poneyIds" name="poneyIds" required #poneyIdsSelect="ngModel" minlength="2">
+      <mat-option *ngFor="let poney of ponies$ | async" [value]="poney.id">
+        {{ poney.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit" [disabled]="nameInput.invalid || poneyIdsSelect.invalid" mat-raised-button>Create</button>
+
+</form>

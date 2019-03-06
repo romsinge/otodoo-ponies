@@ -1,4 +1,4 @@
-import { MatCardModule, MatToolbarModule, MatListModule, MatButtonModule } from '@angular/material';
+import * as M from '@angular/material';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,10 +8,12 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   exports: [
-    MatToolbarModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule
+    M.MatToolbarModule,
+    M.MatCardModule,
+    M.MatListModule,
+    M.MatButtonModule,
+    M.MatInputModule,
+    M.MatSelectModule
   ]
 })
 export class MaterialModule { }

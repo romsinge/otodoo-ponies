@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { DataService } from './../../services/data.service';
 import { Poney } from './../../interfaces/poney';
 import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
@@ -15,6 +15,7 @@ export class RaceComponent implements OnInit {
 
   @ViewChildren('poneyChildren') poneyChildren: QueryList<PoneyComponent>
   race$: Observable<Race>
+  raceSubscription: Subscription
 
   ponies$: Observable<Poney[]>
 
@@ -33,11 +34,15 @@ export class RaceComponent implements OnInit {
 
     this.race$ = this.dataService.getRaceById(raceId)
 
-    this.race$.subscribe(race => {
+    this.raceSubscription = this.race$.subscribe(race => {
       if (!race) {
         this.router.navigateByUrl('')
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.raceSubscription.unsubscribe()
   }
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {}

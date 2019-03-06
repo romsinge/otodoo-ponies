@@ -15,6 +15,8 @@ import { CreateRaceComponent } from './components/create-race/create-race.compon
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,17 @@ import { HttpClientModule } from '@angular/common/http';
     RaceComponent,
     RacingPipe,
     HomeComponent,
-    CreateRaceComponent
+    CreateRaceComponent,
+    CreatePoneyComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

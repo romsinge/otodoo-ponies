@@ -7,9 +7,15 @@
     position: relative;
     left: 0;
     transition: left 1s linear;
+    animation: mymove .1s linear alternate infinite;
   
     img {
       width: 100%;
     }
   }
+}
+
+@keyframes mymove {
+  from {transform: rotateZ(-2deg);}
+  to {transform: rotateZ(2deg);}
 }

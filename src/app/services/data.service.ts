@@ -29,10 +29,6 @@ export class DataService {
   get races(): Observable<Race[]> {
 
     if (this._races && this._races.length) {
-      // return new Observable(observer => {
-      //   observer.next(this._races)
-      // })
-
       return of(this._races)
     }
 
@@ -44,6 +40,24 @@ export class DataService {
   getRaceById(id: string): Observable<Race> {
     return this.races.pipe(map(races => {
       return races.find(race => race.id === id)
+    }))
+  }
+
+  saveRace(race: Race): Observable<Object> {
+    return this.http.post(`${this.API_URL}/races`, race).pipe(tap(result => {
+      this._races = []
+    }))
+  }
+
+  savePoney(poney: Poney): Observable<Object> {
+    return this.http.post(`${this.API_URL}/ponies`, poney).pipe(tap(result => {
+      this._ponies = []
+    }))
+  }
+
+  checkIfNameIsAvailable(name: string): Observable<boolean> {
+    return this.ponies.pipe(map(ponies => {
+      return !ponies.find(poney => poney.name.toLowerCase() === name.toLowerCase())
     }))
   }
 
