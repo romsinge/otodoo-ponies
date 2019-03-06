@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  padding: 20px 0;
+
+  .container {
+    width: 10%;
+    position: relative;
+    left: 0;
+    transition: left 1s linear;
+  
+    img {
+      width: 100%;
+    }
+  }
+}

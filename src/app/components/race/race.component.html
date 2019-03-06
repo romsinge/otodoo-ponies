@@ -1,0 +1,14 @@
+<!-- <span *ngIf="race"> -->
+  <mat-toolbar>
+    <span>{{ (race$ | async)?.name }}</span>
+  </mat-toolbar>
+  
+  <oto-poney
+    otoRainbow="pink"
+    [hasColor]="e"
+    *ngFor="let poney of ponies$ | async | racing:(race$ | async)?.poneyIds; let e = even"
+    (win)="handleWin($event)"
+    [poney]="poney"
+    #poneyChildren
+  ></oto-poney>
+<!-- </span> -->

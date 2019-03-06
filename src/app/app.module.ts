@@ -1,14 +1,38 @@
+import { DivideByPipe } from './pipes/divide-by.pipe';
+import { MaterialModule } from './modules/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { PoneyComponent } from './components/poney/poney.component';
+import { RainbowDirective } from './directives/rainbow.directive';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RaceComponent } from './components/race/race.component';
+import { RacingPipe } from './pipes/racing.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { CreateRaceComponent } from './components/create-race/create-race.component'
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PoneyComponent,
+    RainbowDirective,
+    DivideByPipe,
+    RaceComponent,
+    RacingPipe,
+    HomeComponent,
+    CreateRaceComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
