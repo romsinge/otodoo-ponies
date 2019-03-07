@@ -1,3 +1,4 @@
+import { PoneyEffects } from './ngrx/effects/poney.effects';
 import { DivideByPipe } from './pipes/divide-by.pipe';
 import { MaterialModule } from './modules/material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './modules/modal/modal.module';
 import { ConfirmDialog } from './modules/crud-poney/guards/exit.guard';
+import { StoreModule } from '@ngrx/store';
+import { poneyReducer } from './ngrx/reducers/poney.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -38,7 +43,16 @@ import { ConfirmDialog } from './modules/crud-poney/guards/exit.guard';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    StoreModule.forRoot({
+      ponies: poneyReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 30
+    }),
+    EffectsModule.forRoot([
+      PoneyEffects
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

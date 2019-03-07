@@ -1,3 +1,6 @@
+import { AddPoney } from './../../../../ngrx/actions/poney.actions';
+import { AppState } from './../../../../ngrx/app.state';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { DataService } from '../../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +23,11 @@ export class CreatePoneyComponent implements OnInit {
     isAvailable: "Ce nom n'est pas disponible"
   }
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
     this.poneyForm = new FormGroup({
@@ -31,6 +38,7 @@ export class CreatePoneyComponent implements OnInit {
 
   handleSubmit() {
     let subscription = this.dataService.savePoney(this.poneyForm.value).subscribe(data => {
+      this.store.dispatch(new AddPoney(data))
       this.poneyForm.reset()
       this.router.navigateByUrl('')
       subscription.unsubscribe()

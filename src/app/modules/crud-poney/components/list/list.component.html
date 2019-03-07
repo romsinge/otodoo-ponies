@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let poney of ponies$ | async">
+    {{ poney.name }}
+    <button (click)="handleDeleteClick(poney.id)">Delete</button>
+  </li>
+</ul>

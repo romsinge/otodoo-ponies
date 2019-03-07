@@ -1,3 +1,4 @@
+import { AppState } from './../../ngrx/app.state';
 import { ModalService } from './../../modules/modal/services/modal.service';
 import { Observable, Subject, Subscription } from 'rxjs';
 import { DataService } from './../../services/data.service';
@@ -6,6 +7,7 @@ import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { PoneyComponent } from '../poney/poney.component';
 import { Race } from 'src/app/interfaces/race';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'oto-race',
@@ -31,7 +33,7 @@ export class RaceComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ponies$ = this.dataService.ponies
+    this.ponies$ = this.store.pipe(select('ponies'))
 
     let raceId = this.route.snapshot.paramMap.get('id')
 
@@ -52,7 +54,8 @@ export class RaceComponent implements OnInit {
     private dataService: DataService,
     private route: ActivatedRoute,
     private router: Router,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private store: Store<AppState>
   ) {}
 
 }

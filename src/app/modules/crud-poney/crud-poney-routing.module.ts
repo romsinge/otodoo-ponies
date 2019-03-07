@@ -1,13 +1,29 @@
 import { ExitGuard } from './guards/exit.guard';
+import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
+import { ListComponent } from './components/list/list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
+import { CrudPoneyComponent } from './components/crud-poney/crud-poney.component';
 
 const routes: Routes = [
   {
     path: '',
-    canDeactivate: [ ExitGuard ],
-    component: CreatePoneyComponent
+    component: CrudPoneyComponent,
+    children: [
+      {
+        path: 'list',
+        component: ListComponent
+      },
+      {
+        path: 'create',
+        component: CreatePoneyComponent,
+        canDeactivate: [ ExitGuard ]
+      },
+      {
+        path: '**',
+        redirectTo: 'list'
+      }
+    ]
   }
 ];
 

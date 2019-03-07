@@ -18,12 +18,12 @@ export class DataService {
 
   get ponies(): Observable<Poney[]> {
 
-    if (this._ponies && this._ponies.length) {
-      return of(this._ponies)
-    }
+    // if (this._ponies && this._ponies.length) {
+    //   return of(this._ponies)
+    // }
 
     return this.http.get<Poney[]>(`${this.API_URL}/ponies`)
-      .pipe(tap(ponies => this._ponies = ponies))
+      // .pipe(tap(ponies => this._ponies = ponies))
   }
 
   get races(): Observable<Race[]> {
@@ -49,8 +49,8 @@ export class DataService {
     }))
   }
 
-  savePoney(poney: Poney): Observable<Object> {
-    return this.http.post(`${this.API_URL}/ponies`, poney).pipe(tap(result => {
+  savePoney(poney: Poney): Observable<Poney> {
+    return this.http.post<Poney>(`${this.API_URL}/ponies`, poney).pipe(tap(result => {
       this._ponies = []
     }))
   }

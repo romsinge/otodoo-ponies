@@ -1,9 +1,11 @@
+import { AppState } from './../../../../ngrx/app.state';
 import { Poney } from '../../../../interfaces/poney';
 import { DataService } from '../../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Race } from 'src/app/interfaces/race';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'oto-create-race',
@@ -18,10 +20,14 @@ export class CreateRaceComponent implements OnInit {
     "poneyIds": []
   }
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
-    this.ponies$ = this.dataService.ponies
+    this.ponies$ = this.store.pipe(select('ponies'))
   }
 
   handleSubmit(): void {
