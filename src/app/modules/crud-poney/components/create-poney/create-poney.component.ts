@@ -37,12 +37,8 @@ export class CreatePoneyComponent implements OnInit {
   }
 
   handleSubmit() {
-    let subscription = this.dataService.savePoney(this.poneyForm.value).subscribe(data => {
-      this.store.dispatch(new AddPoney(data))
-      this.poneyForm.reset()
-      this.router.navigateByUrl('')
-      subscription.unsubscribe()
-    })
+    this.store.dispatch(new AddPoney(this.poneyForm.value))
+    this.poneyForm.reset()
   }
 
   isGif(control: FormControl): ValidationErrors | null {

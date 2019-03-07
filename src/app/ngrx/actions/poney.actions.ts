@@ -3,7 +3,9 @@ import { Action } from '@ngrx/store'
 
 export enum ActionTypes {
   Add = '[Poney] Add',
+  AddSuccess = '[Poney] Add Success',
   Delete = '[Poney] Delete',
+  DeleteSuccess = '[Poney] Delete Success',
   Init = '[Poney] Init',
   InitSuccess = '[Poney] Init Success'
 }
@@ -24,6 +26,12 @@ export class AddPoney implements Action {
   constructor(public payload: Poney) {}
 }
 
+export class AddPoneySuccess implements Action {
+  type: string = ActionTypes.AddSuccess
+
+  constructor(public payload: Poney) {}
+}
+
 export class DeletePoney implements Action {
   type: string = ActionTypes.Delete
 
@@ -31,4 +39,11 @@ export class DeletePoney implements Action {
   constructor(public payload: string) {}
 }
 
-export type PoneyAction = AddPoney | DeletePoney | InitPoniesSuccess
+export class DeletePoneySuccess implements Action {
+  type: string = ActionTypes.DeleteSuccess
+
+  // payload : poney id
+  constructor(public payload: string) {}
+}
+
+export type PoneyAction = AddPoneySuccess | DeletePoneySuccess | InitPoniesSuccess

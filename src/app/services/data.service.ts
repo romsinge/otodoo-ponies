@@ -61,5 +61,9 @@ export class DataService {
     }))
   }
 
+  deletePoney(id: string): Observable<Object> {
+    return this.http.delete(`${this.API_URL}/ponies/${id}`)
+  }
+
   constructor(private http: HttpClient) { }
 }
