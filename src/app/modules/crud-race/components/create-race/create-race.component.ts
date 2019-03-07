@@ -1,5 +1,5 @@
-import { Poney } from './../../interfaces/poney';
-import { DataService } from './../../services/data.service';
+import { Poney } from '../../../../interfaces/poney';
+import { DataService } from '../../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Race } from 'src/app/interfaces/race';

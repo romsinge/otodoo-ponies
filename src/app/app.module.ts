@@ -10,15 +10,12 @@ import { RainbowDirective } from './directives/rainbow.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RaceComponent } from './components/race/race.component';
 import { RacingPipe } from './pipes/racing.pipe';
-import { HomeComponent } from './components/home/home.component';
-import { CreateRaceComponent } from './components/create-race/create-race.component'
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CreatePoneyComponent } from './components/create-poney/create-poney.component';
 import { ModalModule } from './modules/modal/modal.module';
-import { ConfirmDialog } from './guards/exit.guard';
+import { ConfirmDialog } from './modules/crud-poney/guards/exit.guard';
 
 @NgModule({
   declarations: [
@@ -28,9 +25,6 @@ import { ConfirmDialog } from './guards/exit.guard';
     DivideByPipe,
     RaceComponent,
     RacingPipe,
-    HomeComponent,
-    CreateRaceComponent,
-    CreatePoneyComponent,
     ConfirmDialog
   ],
   entryComponents: [

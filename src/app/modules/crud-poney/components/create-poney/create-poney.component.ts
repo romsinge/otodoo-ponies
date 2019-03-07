@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { DataService } from './../../services/data.service';
+import { DataService } from '../../../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidationErrors } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -31,6 +31,7 @@ export class CreatePoneyComponent implements OnInit {
 
   handleSubmit() {
     let subscription = this.dataService.savePoney(this.poneyForm.value).subscribe(data => {
+      this.poneyForm.reset()
       this.router.navigateByUrl('')
       subscription.unsubscribe()
     })

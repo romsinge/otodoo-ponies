@@ -1,5 +1,5 @@
-import { DataService } from './../../services/data.service';
-import { Race } from './../../interfaces/race';
+import { DataService } from '../../../../services/data.service';
+import { Race } from '../../../../interfaces/race';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
